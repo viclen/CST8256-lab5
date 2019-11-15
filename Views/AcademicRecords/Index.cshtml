@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Lab5.Models.DataAccess.AcademicRecord>
+
+@{
+    ViewData["Title"] = "Academic Records";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Course
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseCodeNavigation.Code)
+                -
+                @Html.DisplayFor(modelItem => item.CourseCodeNavigation.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Id)
+                -
+                @Html.DisplayFor(modelItem => item.Student.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
